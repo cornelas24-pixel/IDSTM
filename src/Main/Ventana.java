@@ -66,10 +66,7 @@ public class Ventana extends JFrame
 		username.setLocation(40,150);
 		username.setBackground(Color.white);
 		username.setFont(new Font("Arial",Font.PLAIN,16));
-		username.setBorder(BorderFactory.createCompoundBorder(
-				BorderFactory.createLineBorder(new Color(200,200,200),1),
-				BorderFactory.createEmptyBorder(5,10,5,10)
-		));
+		username.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(200,200,200),1),BorderFactory.createEmptyBorder(5,10,5,10)));
 		card.add(username);
 		
 		//contraseña
@@ -78,10 +75,7 @@ public class Ventana extends JFrame
 		password.setLocation(40,200);
 		password.setBackground(Color.white);
 		password.setFont(new Font("Arial",Font.PLAIN,16));
-		password.setBorder(BorderFactory.createCompoundBorder(
-				BorderFactory.createLineBorder(new Color(200,200,200),1),
-				BorderFactory.createEmptyBorder(5,10,5,10)
-		));
+		password.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(200,200,200),1),BorderFactory.createEmptyBorder(5,10,5,10)));
 		card.add(password);
 		
 		//boton de acceder
