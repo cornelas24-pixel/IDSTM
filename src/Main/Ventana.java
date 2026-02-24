@@ -84,7 +84,7 @@ public class Ventana extends JFrame
 		));
 		card.add(password);
 		
-		//boton de acceder (botón principal azul)
+		//boton de acceder
 		JButton acceder = new JButton();
 		acceder.setSize(240,40);
 		acceder.setLocation(40,255);
@@ -113,7 +113,7 @@ public class Ventana extends JFrame
 		forgot_pass.setHorizontalAlignment(JLabel.CENTER);
 		card.add(forgot_pass);
 		
-		//boton de crear cuenta (secundario minimalista)
+		//boton de crear cuenta
 		JButton new_account = new JButton();
 		new_account.setSize(240,35);
 		new_account.setLocation(40,350);
