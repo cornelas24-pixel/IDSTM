@@ -1,12 +1,16 @@
 package Main;
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import java.awt.Color;
@@ -18,7 +22,7 @@ public class Ventana extends JFrame
 	{
 		
 		this.setVisible(true);
-		this.setSize(500,600);
+		this.setSize(1000,600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setMinimumSize(new Dimension(200,200));
 		this.setMaximumSize(new Dimension(800,800));
@@ -30,7 +34,7 @@ public class Ventana extends JFrame
 		JPanel contenedor = new JPanel();
 		contenedor.setOpaque(true);
 		contenedor.setBackground(new Color(240,240,240));
-		contenedor.setSize(500,500);
+		contenedor.setSize(1000,500);
 		contenedor.setLayout(null);
 		contenedor.setLocation(0,0);
 		this.add(contenedor);
@@ -116,6 +120,138 @@ public class Ventana extends JFrame
 		new_account.setText("Crear cuenta");
 		new_account.setBorder(BorderFactory.createLineBorder(new Color(200,200,200),1));
 		card.add(new_account);
+		
+		//REGISTER --------------------------------------------------
+		
+		JPanel register_container = new JPanel();
+		register_container.setLayout(null);
+		register_container.setBackground(Color.white);
+		register_container.setSize(320,400);
+		register_container.setLocation(450,60);
+		register_container.setBorder(BorderFactory.createLineBorder(new Color(220,220,220),1));
+		contenedor.add(register_container);
+		
+		//titulo login
+		JLabel title_register = new JLabel();
+		title_register.setText("Registro");
+		title_register.setSize(320,40);
+		title_register.setLocation(0,35);
+		title_register.setFont(new Font("Arial",Font.BOLD,24));
+		title_register.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(title_register);
+		
+		JLabel nombre_usuario = new JLabel();
+		nombre_usuario.setText("Nombre de usuario");
+		nombre_usuario.setSize(320,105);
+		nombre_usuario.setLocation(0,35);
+		nombre_usuario.setFont(new Font("Arial",Font.BOLD,12));
+		nombre_usuario.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(nombre_usuario);
+		 
+		JTextField username_reg = new JTextField();
+		username_reg.setSize(240,35);
+		username_reg.setLocation(40,100);
+		username_reg.setBackground(Color.white);
+		username_reg.setFont(new Font("Arial",Font.PLAIN,16));
+		username_reg.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(200,200,200),1),BorderFactory.createEmptyBorder(5,10,5,10)));
+		register_container.add(username_reg);
+		
+		JLabel bio_text = new JLabel();
+		bio_text.setText("Biografia");
+		bio_text.setSize(320,105);
+		bio_text.setLocation(0,100);
+		bio_text.setFont(new Font("Arial",Font.BOLD,12));
+		bio_text.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(bio_text);
+		
+		JTextArea bio = new JTextArea();
+		bio.setBounds(40,160, 240, 60);
+		bio.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(new Color(200,200,200),1),BorderFactory.createEmptyBorder(5,10,5,10)));
+		register_container.add(bio);
+		
+		JLabel preference_text = new JLabel();
+		preference_text.setText("Preferencias");
+		preference_text.setSize(320,105);
+		preference_text.setLocation(0,180);
+		preference_text.setFont(new Font("Arial",Font.BOLD,12));
+		preference_text.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(preference_text);
+		
+		JCheckBox dulce = new JCheckBox();
+		dulce.setSize(80,20);
+		dulce.setLocation(40,240);
+		dulce.setBackground(Color.white);
+		dulce.setFont(new Font("Arial",Font.PLAIN,13));
+		dulce.setText("dulce");
+		register_container.add(dulce);
+		
+		JCheckBox salado = new JCheckBox();
+		salado.setSize(80,20);
+		salado.setLocation(120,240);
+		salado.setBackground(Color.white);
+		salado.setFont(new Font("Arial",Font.PLAIN,13));
+		salado.setText("Salado");
+		register_container.add(salado);
+		
+		JCheckBox saludable = new JCheckBox();
+		saludable.setSize(90,20);
+		saludable.setLocation(200,240);
+		saludable.setBackground(Color.white);
+		saludable.setFont(new Font("Arial",Font.PLAIN,13));
+		saludable.setText("Saludable");
+		register_container.add(saludable);
+		
+		JLabel terms = new JLabel();
+		terms.setText("Preferencias");
+		terms.setSize(320,105);
+		terms.setLocation(0,180);
+		terms.setFont(new Font("Arial",Font.BOLD,12));
+		terms.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(terms);
+		//Terminos
+		JLabel condiciones = new JLabel();
+		condiciones.setText("Política de privacidad");
+		condiciones.setSize(240,25);
+		condiciones.setLocation(40,265);
+		condiciones.setFont(new Font("Arial",Font.PLAIN,15));
+		condiciones.setForeground(new Color(66,133,244));
+		condiciones.setHorizontalAlignment(JLabel.CENTER);
+		register_container.add(condiciones);
+		
+		
+		JRadioButton reject_terms = new JRadioButton("Rechazar");
+		reject_terms.setBounds(200,282,150,25);
+		reject_terms.setOpaque(false);
+		register_container.add(reject_terms);
+		
+		JRadioButton accept_terms = new JRadioButton("Acceptar");
+		accept_terms.setBounds(40,282,150,25);
+		accept_terms.setOpaque(false);
+		register_container.add(accept_terms);
+		
+		// Grupo excluyente
+		ButtonGroup group_terms = new ButtonGroup();
+		group_terms.add(accept_terms);
+		group_terms.add(reject_terms);
+		
+        String[] colonias = {
+                "Camino Real",
+                "Santa Fe",
+                "Miramar",
+                "Francisco Villa"
+            };
+		JComboBox<String> comboColonias = new JComboBox<>(colonias);
+	    comboColonias.setBounds(80, 315, 160, 30);
+	    register_container.add(comboColonias);
+	    
+		JButton new_account2 = new JButton();
+		new_account2.setSize(240,35);
+		new_account2.setLocation(40,350);
+		new_account2.setBackground(Color.white);
+		new_account2.setFont(new Font("Arial",Font.BOLD,14));
+		new_account2.setText("Crear cuenta");
+		new_account2.setBorder(BorderFactory.createLineBorder(new Color(200,200,200),1));
+		register_container.add(new_account2);
 		
 		contenedor.repaint();
 		contenedor.revalidate();
