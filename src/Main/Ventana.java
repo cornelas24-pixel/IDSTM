@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Image;
 
 public class Ventana extends JFrame
 {
@@ -36,7 +37,7 @@ public class Ventana extends JFrame
 		this.setLayout(null);
 
 		
-JMenuBar barra = new JMenuBar();
+		JMenuBar barra = new JMenuBar();
 		
 		JMenu archivo = new JMenu("Archivo");
 		
@@ -68,7 +69,7 @@ JMenuBar barra = new JMenuBar();
 		this.setJMenuBar(barra);
 		
 		//abrir pestañas
-		this.users();
+		this.login();
 
 		
 
@@ -80,7 +81,7 @@ JMenuBar barra = new JMenuBar();
 		JPanel contenedor = new JPanel();
 		contenedor.setOpaque(true);
 		contenedor.setBackground(new Color(240,240,240));
-		contenedor.setSize(500,500);
+		contenedor.setSize(1000,500);
 		contenedor.setLayout(null);
 		contenedor.setLocation(0,0);
 		this.add(contenedor);
@@ -89,12 +90,63 @@ JMenuBar barra = new JMenuBar();
 		JPanel card = new JPanel();
 		card.setLayout(null);
 		card.setBackground(Color.white);
-		card.setSize(320,400);
+		card.setSize(620,400);
 		card.setLocation(90,60);
 		card.setBorder(BorderFactory.createLineBorder(new Color(220,220,220),1));
 		contenedor.add(card);
 		
-		//png (logo centrado)
+		ImageIcon icon3 = new ImageIcon("src/Main/waves.png");
+		//escalar imagen a la resolución que quiera
+		Image img2 = icon3.getImage();
+		Image imgScaled2 = img2.getScaledInstance(350, 150, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon2 = new ImageIcon(imgScaled2);
+
+		JLabel wave = new JLabel(scaledIcon2);
+		wave.setBounds(275, -42, 350, 150);
+		card.add(wave);
+		
+		
+		//logo principal
+		ImageIcon marca = new ImageIcon("src/Main/logo.png");
+		//escalar imagen a la resolución que quiera
+		Image img3 = marca.getImage();
+		Image imgScaled3 = img3.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon3 = new ImageIcon(imgScaled3);
+		
+		JLabel principal = new JLabel(scaledIcon3);
+		principal.setBounds(350, 100, 200, 200);
+		card.add(principal);
+		
+		
+		ImageIcon key = new ImageIcon("src/Main/key.png");
+		//escalar imagen a la resolución que quiera
+		Image img4 = key.getImage();
+		Image imgScaled4 = img4.getScaledInstance(45, 20, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon4 = new ImageIcon(imgScaled4);
+		
+		JLabel passkey = new JLabel(scaledIcon4);
+		passkey.setBounds(218, 208, 45, 20);
+		card.add(passkey);
+		
+		ImageIcon user = new ImageIcon("src/Main/user.png");
+		//escalar imagen a la resolución que quiera
+		Image img5 = user.getImage();
+		Image imgScaled5 = img5.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon5 = new ImageIcon(imgScaled5);
+		
+		JLabel userkey = new JLabel(scaledIcon5);
+		userkey.setBounds(225, 142, 50, 50);
+		card.add(userkey);
+		
+		ImageIcon icon2 = new ImageIcon("src/Main/waves2.png");
+		Image img = icon2.getImage();
+		Image imgScaled = img.getScaledInstance(350, 150, Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon = new ImageIcon(imgScaled);
+
+		JLabel wave2 = new JLabel(scaledIcon);
+		wave2.setBounds(275, 290, 350, 150);
+		card.add(wave2);
+		//png
 		ImageIcon icon = new ImageIcon("src/Main/images.png");
 		JLabel logo = new JLabel(icon);
 		logo.setBounds(128,20,64,64);
@@ -114,6 +166,7 @@ JMenuBar barra = new JMenuBar();
 		JTextField username = new JTextField();
 		username.setSize(240,35);
 		username.setLocation(40,150);
+		username.setOpaque(false);
 		username.setBackground(Color.white);
 		username.setFont(new Font("Arial",Font.PLAIN,16));
 		username.setBorder(BorderFactory.createCompoundBorder(
@@ -127,6 +180,7 @@ JMenuBar barra = new JMenuBar();
 		password.setSize(240,35);
 		password.setLocation(40,200);
 		password.setBackground(Color.white);
+		password.setOpaque(false);
 		password.setFont(new Font("Arial",Font.PLAIN,16));
 		password.setBorder(BorderFactory.createCompoundBorder(
 				BorderFactory.createLineBorder(new Color(200,200,200),1),
