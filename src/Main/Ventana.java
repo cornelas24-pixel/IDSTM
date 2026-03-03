@@ -20,9 +20,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.ComponentOrientation;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 
 public class Ventana extends JFrame
@@ -65,11 +69,11 @@ public class Ventana extends JFrame
 		this.setJMenuBar(barra);
 		
 		barra.add(archivo);
-		
-		this.setJMenuBar(barra);
+		//barra
+		//this.setJMenuBar(barra);
 		
 		//abrir pestañas
-		this.login();
+		this.test();
 
 		
 
@@ -499,5 +503,65 @@ public class Ventana extends JFrame
 		contenedor.repaint();
 		contenedor.revalidate();
 		this.setVisible(true);
+	}
+	public void test()
+	{
+		JPanel test_panel = new JPanel();
+		test_panel.setSize(500, 500);
+		test_panel.setLocation(100, 50);
+		test_panel.setBackground(Color.white);
+		test_panel.setLayout(new BorderLayout(0,0));
+		this.add(test_panel);
+		
+		
+		
+		JTextField users_title = new JTextField("USUARIOS"); 
+		users_title.setFont(new Font("Arial",Font.BOLD,22));
+		test_panel.add(users_title,BorderLayout.NORTH);
+		
+		
+		JPanel center_panel = new JPanel(); 
+		center_panel.setLayout(new GridLayout(4,3));
+		
+		center_panel.add(new JButton("7"));
+		center_panel.add(new JButton("8"));
+		center_panel.add(new JButton("9"));
+		center_panel.add(new JButton("4"));
+		center_panel.add(new JButton("5"));
+		center_panel.add(new JButton("6"));
+		center_panel.add(new JButton("1"));
+		center_panel.add(new JButton("2"));
+		center_panel.add(new JButton("3"));
+		center_panel.add(new JButton("."));
+		center_panel.add(new JButton("0"));
+		center_panel.add(new JButton("="));
+
+		test_panel.add(center_panel,BorderLayout.CENTER);
+		
+		JPanel lateral_panel = new JPanel(); 
+		lateral_panel.setLayout(new GridLayout(4,0));
+		
+		lateral_panel.add(new JButton("/"));
+		lateral_panel.add(new JButton("x"));
+		lateral_panel.add(new JButton("-"));
+		lateral_panel.add(new JButton("+"));
+		test_panel.add(lateral_panel,BorderLayout.EAST);
+
+		
+		/*
+		JPanel south_panel = new JPanel();  
+		south_panel.setBackground(Color.green);
+		south_panel.setLayout(new FlowLayout(5,10,10));
+		
+		south_panel.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		
+		south_panel.add(new JButton("1"));
+		south_panel.add(new JButton("2"));
+		south_panel.add(new JButton("3"));
+		south_panel.add(new JButton("4"));
+		south_panel.add(new JButton("5"));
+		
+		test_panel.add(south_panel,BorderLayout.SOUTH);*/
+		
 	}
 }
