@@ -22,9 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.ComponentOrientation;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -73,7 +71,7 @@ public class Ventana extends JFrame
 		//this.setJMenuBar(barra);
 		
 		//abrir pestañas
-		this.test();
+		this.interes();
 
 		
 
@@ -506,62 +504,103 @@ public class Ventana extends JFrame
 	}
 	public void test()
 	{
-		JPanel test_panel = new JPanel();
-		test_panel.setSize(500, 500);
-		test_panel.setLocation(100, 50);
-		test_panel.setBackground(Color.white);
-		test_panel.setLayout(new BorderLayout(0,0));
-		this.add(test_panel);
-		
-		
-		
-		JTextField users_title = new JTextField("USUARIOS"); 
-		users_title.setFont(new Font("Arial",Font.BOLD,22));
-		test_panel.add(users_title,BorderLayout.NORTH);
-		
-		
-		JPanel center_panel = new JPanel(); 
-		center_panel.setLayout(new GridLayout(4,3));
-		
-		center_panel.add(new JButton("7"));
-		center_panel.add(new JButton("8"));
-		center_panel.add(new JButton("9"));
-		center_panel.add(new JButton("4"));
-		center_panel.add(new JButton("5"));
-		center_panel.add(new JButton("6"));
-		center_panel.add(new JButton("1"));
-		center_panel.add(new JButton("2"));
-		center_panel.add(new JButton("3"));
-		center_panel.add(new JButton("."));
-		center_panel.add(new JButton("0"));
-		center_panel.add(new JButton("="));
+		JPanel calculadora = new JPanel();
+		calculadora.setSize(320,420);
+		calculadora.setLocation(330,80);
+		calculadora.setBackground(new Color(230,230,230));
+		calculadora.setLayout(new BorderLayout(10,10));
+		this.add(calculadora);
 
-		test_panel.add(center_panel,BorderLayout.CENTER);
-		
-		JPanel lateral_panel = new JPanel(); 
-		lateral_panel.setLayout(new GridLayout(4,0));
-		
-		lateral_panel.add(new JButton("/"));
-		lateral_panel.add(new JButton("x"));
-		lateral_panel.add(new JButton("-"));
-		lateral_panel.add(new JButton("+"));
-		test_panel.add(lateral_panel,BorderLayout.EAST);
+		// pantalla
+		JTextField pantalla = new JTextField();
+		pantalla.setFont(new Font("Arial",Font.BOLD,28));
+		pantalla.setHorizontalAlignment(JTextField.RIGHT);
+		pantalla.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+		pantalla.setBackground(Color.white);
+		calculadora.add(pantalla,BorderLayout.NORTH);
 
+		// panel botones
+		JPanel botones = new JPanel();
+		GridLayout mi_layout = new GridLayout(5,4);
+		mi_layout.setVgap(203);
+		mi_layout.setHgap(230);
+		botones.setLayout(mi_layout);
+		botones.setBackground(new Color(230,230,230));
+
+		// fila 1
+		botones.add(new JButton("C"));
+		botones.add(new JButton("+/-"));
+		botones.add(new JButton("%"));
+		botones.add(new JButton("/"));
+
+		// fila 2
+		botones.add(new JButton("7"));
+		botones.add(new JButton("8"));
+		botones.add(new JButton("9"));
+		botones.add(new JButton("x"));
+
+		// fila 3
+		botones.add(new JButton("4"));
+		botones.add(new JButton("5"));
+		botones.add(new JButton("6"));
+		botones.add(new JButton("-"));
+
+		// fila 4
+		botones.add(new JButton("1"));
+		botones.add(new JButton("2"));
+		botones.add(new JButton("3"));
+		botones.add(new JButton("+"));
+
+		// fila 5
+		botones.add(new JButton("0"));
+		botones.add(new JButton("."));
+		botones.add(new JButton("="));
+		botones.add(new JButton(""));
+
+		calculadora.add(botones,BorderLayout.CENTER);
+	}
+	public void interes() 
+	{
+		JPanel calculadora = new JPanel();
+		calculadora.setSize(320,420);
+		calculadora.setLocation(330,80);
+		calculadora.setBackground(new Color(230,230,230));
+		calculadora.setLayout(new BorderLayout(50,50));
+		this.add(calculadora);
 		
-		/*
-		JPanel south_panel = new JPanel();  
-		south_panel.setBackground(Color.green);
-		south_panel.setLayout(new FlowLayout(5,10,10));
+		JLabel title = new JLabel("INTERES");
+		title.setFont(new Font("Arial",Font.BOLD,28));
+		title.setBackground(new Color(230,230,230));
+		calculadora.add(title,BorderLayout.NORTH);
 		
-		south_panel.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		// panel botones
+		JPanel botones = new JPanel();
+		botones.setLayout(new GridLayout(0,2));
+		botones.setBackground(new Color(230,230,230));
+
+		// fila 1
+		botones.add(new JLabel("capital"));
+		botones.add(new JTextField());
+		botones.add(new JLabel("tiempo"));
+		botones.add(new JTextField());
+		botones.add(new JLabel("tasa interes"));
+		botones.add(new JTextField());
+		botones.add(new JButton("calcular"));
+		botones.add(new JButton("cancelar"));
+
+		calculadora.add(botones,BorderLayout.CENTER);
 		
-		south_panel.add(new JButton("1"));
-		south_panel.add(new JButton("2"));
-		south_panel.add(new JButton("3"));
-		south_panel.add(new JButton("4"));
-		south_panel.add(new JButton("5"));
+		JPanel inferior = new JPanel();
+		inferior.setLayout(new GridLayout(0,2));
+		inferior.setBackground(new Color(230,230,230));
+
+		// fila 1
+		inferior.add(new JLabel("Interes:"));
+		inferior.add(new JTextField());
+		inferior.add(new JLabel("Monto:"));
+		inferior.add(new JTextField());
 		
-		test_panel.add(south_panel,BorderLayout.SOUTH);*/
+		calculadora.add(inferior,BorderLayout.SOUTH);
 		
 	}
 }
