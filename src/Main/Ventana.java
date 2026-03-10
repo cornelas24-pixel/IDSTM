@@ -37,7 +37,9 @@ public class Ventana extends JFrame
 		this.setTitle("Calculadora");
 		this.setLocationRelativeTo(null);
 		this.setLayout(null);
-
+		
+		Image icono = new ImageIcon(getClass().getResource("iconoizq.png")).getImage();
+		this.setIconImage(icono);
 		
 		JMenuBar barra = new JMenuBar();
 		
