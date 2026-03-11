@@ -66,11 +66,9 @@ public class Ventana extends JFrame
 		submenu.add(menuItem);
 		archivo.add(submenu);
 		
-		this.setJMenuBar(barra);
+		//this.setJMenuBar(barra);
 		
 		barra.add(archivo);
-		//barra
-		//this.setJMenuBar(barra);
 		
 		//abrir pestañas
 		this.interes();
