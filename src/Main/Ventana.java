@@ -26,6 +26,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Ventana extends JFrame
 {
@@ -71,7 +73,7 @@ public class Ventana extends JFrame
 		barra.add(archivo);
 		
 		//abrir pestañas
-		this.dibujo();
+		this.login();
 
 		
 
@@ -201,6 +203,32 @@ public class Ventana extends JFrame
 		acceder.setBorder(BorderFactory.createLineBorder(new Color(66,133,244),1));
 		card.add(acceder);
 		
+		acceder.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent e) 
+			{
+				String Username_val = username.getText();
+				String password_val = new String(password.getPassword());
+				if (Username_val.equals("")) {
+					username.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+				}
+				else
+				{
+					username.setBorder(BorderFactory.createLineBorder(Color.green, 1));
+				}
+				if (password_val.equals("")) {
+					password.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+				}
+				else
+				{
+					password.setBorder(BorderFactory.createLineBorder(Color.green, 1));
+				}
+			}
+		});
+		
+		
 		JCheckBox remember = new JCheckBox();
 		remember.setSize(240,20);
 		remember.setLocation(40,305);
@@ -229,11 +257,12 @@ public class Ventana extends JFrame
 		new_account.setBorder(BorderFactory.createLineBorder(new Color(200,200,200),1));
 		card.add(new_account);
 		
+		
+		
 		contenedor.repaint();
 		contenedor.revalidate();
 	}
 	
-	//pendiente
 	public void registro()
 	{
 		JPanel contenedor = new JPanel();
