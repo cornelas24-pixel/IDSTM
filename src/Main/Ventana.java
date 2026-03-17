@@ -71,7 +71,7 @@ public class Ventana extends JFrame
 		barra.add(archivo);
 		
 		//abrir pestañas
-		this.interes();
+		this.dibujo();
 
 		
 
@@ -602,5 +602,86 @@ public class Ventana extends JFrame
 		
 		calculadora.add(inferior,BorderLayout.SOUTH);
 		
+	}
+	public void dibujo()
+	{
+		JPanel panel = new JPanel()
+		{
+			protected void paintComponent(java.awt.Graphics g)
+			{
+				super.paintComponent(g);
+
+				g.setColor(new Color(30,170,220));
+				g.fillRect(0,0,1000,620);
+
+				g.setColor(new Color(120,90,60));
+				g.fillRect(0,350,1000,300);
+
+				g.setColor(new Color(240,200,100));
+				g.fillRect(380,250,220,150);
+
+				int x1[] = {360,490,620};
+				int y1[] = {250,160,250};
+				g.setColor(Color.RED);
+				g.fillPolygon(x1,y1,3);
+
+				g.setColor(new Color(140,90,20));
+				g.fillRect(420,290,60,110);
+
+				g.setColor(Color.WHITE);
+				g.fillOval(470,340,8,8);
+
+				g.setColor(Color.WHITE);
+				g.fillRect(510,290,70,70);
+
+				g.setColor(Color.RED);
+				g.drawLine(545,290,545,360);
+				g.drawLine(510,325,580,325);
+
+				g.setColor(Color.GRAY);
+				g.fillRect(540,180,25,60);
+				g.fillRect(530,170,45,15);
+
+				g.setColor(new Color(255,180,70));
+
+				g.fillRect(250,350,20,60);
+				g.fillRect(280,350,20,60);
+				g.fillRect(310,350,20,60);
+				g.fillRect(340,350,20,60);
+				g.fillRect(370,350,20,60);
+				g.fillRect(400,350,20,60);
+
+				int c1x[] = {250,260,270};
+				int c1y[] = {350,330,350};
+				g.fillPolygon(c1x,c1y,3);
+
+				int c2x[] = {280,290,300};
+				int c2y[] = {350,330,350};
+				g.fillPolygon(c2x,c2y,3);
+
+				int c3x[] = {310,320,330};
+				int c3y[] = {350,330,350};
+				g.fillPolygon(c3x,c3y,3);
+
+				int c4x[] = {340,350,360};
+				int c4y[] = {350,330,350};
+				g.fillPolygon(c4x,c4y,3);
+
+				int c5x[] = {370,380,390};
+				int c5y[] = {350,330,350};
+				g.fillPolygon(c5x,c5y,3);
+
+				int c6x[] = {400,410,420};
+				int c6y[] = {350,330,350};
+				g.fillPolygon(c6x,c6y,3);
+			}
+		};
+
+		panel.setBounds(0,0,1000,620);
+		panel.setOpaque(false);
+		this.add(panel);
+
+		this.repaint();
+		this.revalidate();
 	}
 }
