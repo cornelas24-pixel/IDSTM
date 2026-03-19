@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -211,19 +212,19 @@ public class Ventana extends JFrame
 			{
 				String Username_val = username.getText();
 				String password_val = new String(password.getPassword());
-				if (Username_val.equals("")) {
-					username.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+				if (Username_val.isEmpty()) {
+				    username.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+				} else {
+				    username.setBorder(BorderFactory.createLineBorder(Color.GREEN, 1));
 				}
-				else
-				{
-					username.setBorder(BorderFactory.createLineBorder(Color.green, 1));
+				if (password_val.isEmpty()) {
+				    password.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+				} else {
+				    password.setBorder(BorderFactory.createLineBorder(Color.GREEN, 1));
 				}
-				if (password_val.equals("")) {
-					password.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-				}
-				else
-				{
-					password.setBorder(BorderFactory.createLineBorder(Color.green, 1));
+
+				if (!Username_val.isEmpty() && !password_val.isEmpty()) {
+				    JOptionPane.showMessageDialog(null, "Bienvenido.", "Message", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
