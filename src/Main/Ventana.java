@@ -94,8 +94,9 @@ public class Ventana extends JFrame
 		        router("registro");
 		    }
 		});
-		this.router("login");
-
+		//mandar a llamar al router
+		//this.router("login");
+		this.factura();
 		
 
 		this.setVisible(true);
@@ -749,4 +750,219 @@ public class Ventana extends JFrame
 	    this.revalidate();
 	    this.repaint();
 	}
+	public void factura()
+	{
+		JPanel contenedor = new JPanel();
+		contenedor.setOpaque(true);
+		contenedor.setBackground(new Color(240,240,240));
+		contenedor.setSize(1000,600);
+		contenedor.setLayout(null);
+		contenedor.setLocation(0,0);
+		this.add(contenedor);
+
+		JPanel card_factura = new JPanel();
+		card_factura.setLayout(null);
+		card_factura.setBackground(Color.white);
+		card_factura.setBounds(40,30,920,520);
+		card_factura.setBorder(BorderFactory.createLineBorder(new Color(220,220,220),1));
+		contenedor.add(card_factura);
+
+		JLabel title_factura = new JLabel();
+		title_factura.setText("Factura en Java");
+		title_factura.setBounds(0,10,920,30);
+		title_factura.setFont(new Font("Arial",Font.BOLD,22));
+		title_factura.setHorizontalAlignment(JLabel.CENTER);
+		card_factura.add(title_factura);
+
+		JLabel subtitle_factura = new JLabel();
+		subtitle_factura.setText("Sistema de facturación");
+		subtitle_factura.setBounds(0,35,920,20);
+		subtitle_factura.setFont(new Font("Arial",Font.PLAIN,13));
+		subtitle_factura.setForeground(new Color(120,120,120));
+		subtitle_factura.setHorizontalAlignment(JLabel.CENTER);
+		card_factura.add(subtitle_factura);
+
+		JPanel card_cliente = new JPanel();
+		card_cliente.setLayout(null);
+		card_cliente.setBackground(Color.white);
+		card_cliente.setBounds(20,70,880,80);
+		card_cliente.setBorder(BorderFactory.createLineBorder(new Color(220,220,220),1));
+		card_factura.add(card_cliente);
+
+		JLabel title_cliente = new JLabel();
+		title_cliente.setText("Datos del cliente");
+		title_cliente.setBounds(10,5,200,20);
+		title_cliente.setFont(new Font("Arial",Font.BOLD,14));
+		card_cliente.add(title_cliente);
+
+		JLabel label_documento = new JLabel("Documento:");
+		label_documento.setBounds(20,35,100,20);
+		card_cliente.add(label_documento);
+
+		JTextField documento = new JTextField();
+		documento.setBounds(100,35,150,25);
+		card_cliente.add(documento);
+
+		JLabel label_nombre = new JLabel("Nombre:");
+		label_nombre.setBounds(300,35,80,20);
+		card_cliente.add(label_nombre);
+
+		JTextField nombre_cliente = new JTextField();
+		nombre_cliente.setBounds(360,35,200,25);
+		card_cliente.add(nombre_cliente);
+
+		JLabel label_direccion = new JLabel("Dirección:");
+		label_direccion.setBounds(580,35,80,20);
+		card_cliente.add(label_direccion);
+
+		JTextField direccion_cliente = new JTextField();
+		direccion_cliente.setBounds(650,35,200,25);
+		card_cliente.add(direccion_cliente);
+
+		JPanel card_datos_factura = new JPanel();
+		card_datos_factura.setLayout(null);
+		card_datos_factura.setBackground(Color.white);
+		card_datos_factura.setBounds(20,160,880,60);
+		card_datos_factura.setBorder(BorderFactory.createLineBorder(new Color(220,220,220),1));
+		card_factura.add(card_datos_factura);
+
+		JLabel label_n_factura = new JLabel("N° Factura:");
+		label_n_factura.setBounds(20,20,100,20);
+		card_datos_factura.add(label_n_factura);
+
+		JLabel numero_factura = new JLabel("1");
+		numero_factura.setBounds(100,20,60,20);
+		numero_factura.setFont(new Font("Arial",Font.BOLD,13));
+		card_datos_factura.add(numero_factura);
+
+		JLabel label_fecha = new JLabel("Fecha:");
+		label_fecha.setBounds(250,20,60,20);
+		card_datos_factura.add(label_fecha);
+
+		JLabel fecha_factura = new JLabel("2024/06/01");
+		fecha_factura.setBounds(300,20,120,20);
+		fecha_factura.setFont(new Font("Arial",Font.BOLD,13));
+		card_datos_factura.add(fecha_factura);
+
+		JPanel card_tabla = new JPanel();
+		card_tabla.setLayout(null);
+		card_tabla.setBackground(Color.white);
+		card_tabla.setBounds(20,230,880,180);
+		card_tabla.setBorder(BorderFactory.createLineBorder(new Color(220,220,220),1));
+		card_factura.add(card_tabla);
+
+		JLabel title_tabla = new JLabel("Listado de productos");
+		title_tabla.setBounds(20,10,200,25);
+		title_tabla.setFont(new Font("Arial",Font.BOLD,15));
+		card_tabla.add(title_tabla);
+
+		JButton anadir = new JButton("Añadir");
+		anadir.setBounds(670,10,90,30);
+		anadir.setBackground(new Color(66,133,244));
+		anadir.setForeground(Color.white);
+		anadir.setFont(new Font("Arial",Font.BOLD,13));
+		anadir.setBorder(BorderFactory.createLineBorder(new Color(66,133,244),1));
+		card_tabla.add(anadir);
+
+		JButton eliminar = new JButton("Eliminar");
+		eliminar.setBounds(770,10,90,30);
+		eliminar.setBackground(Color.white);
+		eliminar.setFont(new Font("Arial",Font.BOLD,13));
+		eliminar.setBorder(BorderFactory.createLineBorder(new Color(200,200,200),1));
+		card_tabla.add(eliminar);
+
+		String columnas[] = {"Producto","Cantidad","Valor","Sub Total"};
+
+		Object datos[][] = {
+				{"Agua","2","500","1000"},
+				{"Cereal","5","1000","5000"},
+				{"Leche","2","300","600"}
+		};
+
+		DefaultTableModel modelo = new DefaultTableModel(datos,columnas)
+		{
+			public boolean isCellEditable(int row,int column)
+			{
+				return false;
+			}
+		};
+
+		JTable tabla = new JTable(modelo);
+		tabla.setFont(new Font("Arial",Font.PLAIN,13));
+		tabla.setRowHeight(24);
+
+		JScrollPane scroll_tabla = new JScrollPane(tabla);
+		scroll_tabla.setBounds(20,50,840,110);
+		scroll_tabla.setBorder(BorderFactory.createLineBorder(new Color(220,220,220),1));
+		card_tabla.add(scroll_tabla);
+
+		JPanel card_totales = new JPanel();
+		card_totales.setLayout(null);
+		card_totales.setBackground(Color.white);
+		card_totales.setBounds(20,420,880,80);
+		card_totales.setBorder(BorderFactory.createLineBorder(new Color(220,220,220),1));
+		card_factura.add(card_totales);
+
+		JLabel label_subtotal = new JLabel("SubTotal:");
+		label_subtotal.setBounds(20,10,100,20);
+		card_totales.add(label_subtotal);
+
+		JLabel subtotal_valor = new JLabel("6600.0");
+		subtotal_valor.setBounds(100,10,100,20);
+		subtotal_valor.setFont(new Font("Arial",Font.BOLD,13));
+		card_totales.add(subtotal_valor);
+
+		JLabel label_descuento = new JLabel("% Descuento:");
+		label_descuento.setBounds(20,35,100,20);
+		card_totales.add(label_descuento);
+
+		JTextField descuento = new JTextField("5");
+		descuento.setBounds(110,35,50,25);
+		card_totales.add(descuento);
+
+		JCheckBox activar_descuento = new JCheckBox();
+		activar_descuento.setBounds(170,35,20,20);
+		activar_descuento.setBackground(Color.white);
+		card_totales.add(activar_descuento);
+
+		JLabel label_valor_desc = new JLabel("Valor descontado:");
+		label_valor_desc.setBounds(210,35,130,20);
+		card_totales.add(label_valor_desc);
+
+		JLabel valor_descuento = new JLabel("330.0");
+		valor_descuento.setBounds(330,35,80,20);
+		valor_descuento.setFont(new Font("Arial",Font.BOLD,13));
+		card_totales.add(valor_descuento);
+
+		JLabel label_iva = new JLabel("IVA 19%:");
+		label_iva.setBounds(450,10,80,20);
+		card_totales.add(label_iva);
+
+		JLabel iva_valor = new JLabel("1254.0");
+		iva_valor.setBounds(520,10,80,20);
+		iva_valor.setFont(new Font("Arial",Font.BOLD,13));
+		card_totales.add(iva_valor);
+
+		JLabel label_total = new JLabel("Total Factura:");
+		label_total.setBounds(450,35,100,20);
+		label_total.setFont(new Font("Arial",Font.BOLD,13));
+		card_totales.add(label_total);
+
+		JLabel total_factura = new JLabel("7524.0");
+		total_factura.setBounds(550,35,100,20);
+		total_factura.setFont(new Font("Arial",Font.BOLD,14));
+		card_totales.add(total_factura);
+
+		JButton finalizar_factura = new JButton();
+		finalizar_factura.setText("Finalizar factura");
+		finalizar_factura.setBounds(720,25,140,35);
+		finalizar_factura.setBackground(Color.white);
+		finalizar_factura.setFont(new Font("Arial",Font.BOLD,14));
+		finalizar_factura.setBorder(BorderFactory.createLineBorder(new Color(200,200,200),1));
+		card_totales.add(finalizar_factura);
+
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	
 }
