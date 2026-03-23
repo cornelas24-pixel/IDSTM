@@ -69,12 +69,32 @@ public class Ventana extends JFrame
 		submenu.add(menuItem);
 		archivo.add(submenu);
 		
-		//this.setJMenuBar(barra);
+		this.setJMenuBar(barra);
 		
 		barra.add(archivo);
-		
-		//abrir pestañas
-		this.login();
+		JMenu navegar = new JMenu("Navegar");
+
+		JMenuItem irLogin = new JMenuItem("Login");
+		JMenuItem irRegistro = new JMenuItem("Registro");
+
+		navegar.add(irLogin);
+		navegar.add(irRegistro);
+
+		barra.add(navegar);
+		irLogin.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        router("login");
+		    }
+		});
+
+		irRegistro.addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        router("registro");
+		    }
+		});
+		this.router("login");
 
 		
 
@@ -214,6 +234,7 @@ public class Ventana extends JFrame
 				String password_val = new String(password.getPassword());
 				if (Username_val.isEmpty()) {
 				    username.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+				 
 				} else {
 				    username.setBorder(BorderFactory.createLineBorder(Color.GREEN, 1));
 				}
@@ -228,7 +249,7 @@ public class Ventana extends JFrame
 				}
 			}
 		});
-		
+
 		
 		JCheckBox remember = new JCheckBox();
 		remember.setSize(240,20);
@@ -258,6 +279,9 @@ public class Ventana extends JFrame
 		new_account.setBorder(BorderFactory.createLineBorder(new Color(200,200,200),1));
 		card.add(new_account);
 		
+		new_account.addActionListener(e -> {
+		    this.router("registro");
+		});
 		
 		
 		contenedor.repaint();
@@ -713,5 +737,16 @@ public class Ventana extends JFrame
 
 		this.repaint();
 		this.revalidate();
+	}
+	public void router(String target) {
+	    this.getContentPane().removeAll();
+	    if (target.equals("login")) {
+	        this.login();
+	    } 
+	    else if (target.equals("registro")) {
+	        this.registro();
+	    }
+	    this.revalidate();
+	    this.repaint();
 	}
 }
