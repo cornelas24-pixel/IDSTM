@@ -96,7 +96,7 @@ public class Ventana extends JFrame
 		});
 		//mandar a llamar al router
 		//this.router("login");
-		this.factura();
+		this.dibujo();
 		
 
 		this.setVisible(true);
@@ -665,70 +665,106 @@ public class Ventana extends JFrame
 			protected void paintComponent(java.awt.Graphics g)
 			{
 				super.paintComponent(g);
+				super.paintComponent(g);
 
-				g.setColor(new Color(30,170,220));
+				// cielo
+				g.setColor(new Color(150,200,215));
 				g.fillRect(0,0,1000,620);
 
-				g.setColor(new Color(120,90,60));
-				g.fillRect(0,350,1000,300);
+				// Suelo
+				g.setColor(new Color(220,180,160));
+				g.fillRect(0,540,1000,80);
 
-				g.setColor(new Color(240,200,100));
-				g.fillRect(380,250,220,150);
 
-				int x1[] = {360,490,620};
-				int y1[] = {250,160,250};
-				g.setColor(Color.RED);
-				g.fillPolygon(x1,y1,3);
+				// Bloques flotantes
+				g.setColor(new Color(240,135,80));
+				g.fillRect(260,120,90,70);
+				g.fillRect(350,120,90,70);
 
-				g.setColor(new Color(140,90,20));
-				g.fillRect(420,290,60,110);
+				g.fillRect(70,300,90,70);
+				g.fillRect(900,160,90,70);
 
-				g.setColor(Color.WHITE);
-				g.fillOval(470,340,8,8);
+				g.setColor(Color.BLACK);
+				g.drawRect(260,120,90,70);
+				g.drawRect(350,120,90,70);
+				g.drawRect(70,300,90,70);
+				g.drawRect(900,160,90,70);
 
-				g.setColor(Color.WHITE);
-				g.fillRect(510,290,70,70);
 
-				g.setColor(Color.RED);
-				g.drawLine(545,290,545,360);
-				g.drawLine(510,325,580,325);
+				// Plataforma rosa
+				g.setColor(new Color(220,160,150));
+				g.fillRoundRect(220,400,230,140,25,25);
 
+				g.setColor(Color.BLACK);
+				g.drawRoundRect(220,400,230,140,25,25);
+
+				// Tornillo
 				g.setColor(Color.GRAY);
-				g.fillRect(540,180,25,60);
-				g.fillRect(530,170,45,15);
+				g.fillOval(235,415,25,25);
+				g.fillOval(405,415,25,25);
+				g.fillOval(235,495,25,25);
+				g.fillOval(405,495,25,25);
 
-				g.setColor(new Color(255,180,70));
 
-				g.fillRect(250,350,20,60);
-				g.fillRect(280,350,20,60);
-				g.fillRect(310,350,20,60);
-				g.fillRect(340,350,20,60);
-				g.fillRect(370,350,20,60);
-				g.fillRect(400,350,20,60);
+				// Sombra rosa
+				g.setColor(Color.BLACK);
+				g.fillRect(450,420,25,120);
 
-				int c1x[] = {250,260,270};
-				int c1y[] = {350,330,350};
-				g.fillPolygon(c1x,c1y,3);
 
-				int c2x[] = {280,290,300};
-				int c2y[] = {350,330,350};
-				g.fillPolygon(c2x,c2y,3);
+				// plataforma azul
+				g.setColor(new Color(120,160,205));
+				g.fillRoundRect(480,340,200,200,25,25);
 
-				int c3x[] = {310,320,330};
-				int c3y[] = {350,330,350};
-				g.fillPolygon(c3x,c3y,3);
+				g.setColor(Color.BLACK);
+				g.drawRoundRect(480,340,200,200,25,25);
 
-				int c4x[] = {340,350,360};
-				int c4y[] = {350,330,350};
-				g.fillPolygon(c4x,c4y,3);
+				// tornillos
+				g.setColor(Color.GRAY);
+				g.fillOval(500,360,25,25);
+				g.fillOval(630,360,25,25);
 
-				int c5x[] = {370,380,390};
-				int c5y[] = {350,330,350};
-				g.fillPolygon(c5x,c5y,3);
 
-				int c6x[] = {400,410,420};
-				int c6y[] = {350,330,350};
-				g.fillPolygon(c6x,c6y,3);
+				// Sombra azul
+				g.setColor(Color.BLACK);
+				g.fillRect(680,380,35,160);
+
+
+				// tuberia verde
+
+				// Cuerpo
+				g.setColor(new Color(40,160,40));
+				g.fillRect(770,380,110,160);
+
+				// División central
+				g.setColor(new Color(25,130,25));
+				g.fillRect(820,380,4,160);
+
+				// Boca de la tubería
+				g.setColor(new Color(70,200,70));
+				g.fillRect(760,350,130,40);
+
+				// borde inferior de la boca
+				g.setColor(new Color(30,140,30));
+				g.fillRect(760,380,130,10);
+
+				// líneas decorativas
+				g.setColor(new Color(30,120,30));
+				g.drawLine(785,350,785,540);
+				g.drawLine(855,350,855,540);
+
+
+				// plataforma verde
+				g.setColor(new Color(80,190,100));
+				g.fillRoundRect(950,400,200,140,25,25);
+
+				g.setColor(Color.BLACK);
+				g.drawRoundRect(950,400,200,140,25,25);
+
+				// tornillos
+				g.setColor(Color.GRAY);
+				g.fillOval(970,420,25,25);
+				g.fillOval(970,495,25,25);
+				
 			}
 		};
 
