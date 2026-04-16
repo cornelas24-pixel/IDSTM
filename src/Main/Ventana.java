@@ -77,6 +77,18 @@ public class Ventana extends JFrame
 		JMenuItem irLogin = new JMenuItem("Login");
 		JMenuItem irRegistro = new JMenuItem("Registro");
 
+		JMenu ayuda = new JMenu("Ayuda");
+
+		JMenuItem crearUsuario = new JMenuItem("¿Cómo crear un usuario?");
+		JMenuItem accederSistema = new JMenuItem("¿Cómo acceder al sistema?");
+		JMenuItem acerca = new JMenuItem("Acerca de"); // tercera opción
+
+		ayuda.add(crearUsuario);
+		ayuda.add(accederSistema);
+		ayuda.add(acerca);
+
+		barra.add(ayuda);
+		
 		navegar.add(irLogin);
 		navegar.add(irRegistro);
 
@@ -94,13 +106,79 @@ public class Ventana extends JFrame
 		        router("registro");
 		    }
 		});
+		crearUsuario.addActionListener(e -> {
+		    router("crear");
+		});
+
+		accederSistema.addActionListener(e -> {
+		    router("acceder");
+		});
+
+		acerca.addActionListener(e -> {
+		    router("acerca");
+		});
 		//mandar a llamar al router
 		//this.router("login");
-		this.dibujo();
+		this.login();
 		
 
 		this.setVisible(true);
 	}
+	public void pantallaCrear() {
+		JPanel contenedor = new JPanel();
+		contenedor.setOpaque(true);
+		contenedor.setBackground(new Color(240,240,240));
+		contenedor.setSize(500,500);
+		contenedor.setLayout(null);
+		contenedor.setLocation(0,0);
+		this.add(contenedor);
+		
+
+		JLabel title_login = new JLabel();
+		title_login.setText("Bienvenido");
+		title_login.setSize(320,40);
+		title_login.setLocation(0,95);
+		title_login.setFont(new Font("Arial",Font.BOLD,24));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		contenedor.add(title_login);
+	    
+	    
+	    
+	    this.add(contenedor);
+
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	public void pantallaAcceder() {
+		JPanel contenedor = new JPanel();
+		contenedor.setOpaque(true);
+		contenedor.setBackground(new Color(240,240,240));
+		contenedor.setSize(500,500);
+		contenedor.setLayout(null);
+		contenedor.setLocation(0,0);
+		this.add(contenedor);
+		
+
+		JLabel title_login = new JLabel();
+		title_login.setText("Bienvenido");
+		title_login.setSize(320,40);
+		title_login.setLocation(0,95);
+		title_login.setFont(new Font("Arial",Font.BOLD,24));
+		title_login.setHorizontalAlignment(JLabel.CENTER);
+		contenedor.add(title_login);
+	    
+	    
+	    
+	    this.add(contenedor);
+
+		contenedor.repaint();
+		contenedor.revalidate();
+	}
+	
+	
+	
+	
+	
 	public void login()
 	{
 
@@ -557,232 +635,28 @@ public class Ventana extends JFrame
 		contenedor.revalidate();
 		this.setVisible(true);
 	}
-	public void test()
-	{
-		JPanel calculadora = new JPanel();
-		calculadora.setSize(320,420);
-		calculadora.setLocation(330,80);
-		calculadora.setBackground(new Color(230,230,230));
-		calculadora.setLayout(new BorderLayout(10,10));
-		this.add(calculadora);
-
-		// pantalla
-		JTextField pantalla = new JTextField();
-		pantalla.setFont(new Font("Arial",Font.BOLD,28));
-		pantalla.setHorizontalAlignment(JTextField.RIGHT);
-		pantalla.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		pantalla.setBackground(Color.white);
-		calculadora.add(pantalla,BorderLayout.NORTH);
-
-		// panel botones
-		JPanel botones = new JPanel();
-		GridLayout mi_layout = new GridLayout(5,4);
-		mi_layout.setVgap(203);
-		mi_layout.setHgap(230);
-		botones.setLayout(mi_layout);
-		botones.setBackground(new Color(230,230,230));
-
-		// fila 1
-		botones.add(new JButton("C"));
-		botones.add(new JButton("+/-"));
-		botones.add(new JButton("%"));
-		botones.add(new JButton("/"));
-
-		// fila 2
-		botones.add(new JButton("7"));
-		botones.add(new JButton("8"));
-		botones.add(new JButton("9"));
-		botones.add(new JButton("x"));
-
-		// fila 3
-		botones.add(new JButton("4"));
-		botones.add(new JButton("5"));
-		botones.add(new JButton("6"));
-		botones.add(new JButton("-"));
-
-		// fila 4
-		botones.add(new JButton("1"));
-		botones.add(new JButton("2"));
-		botones.add(new JButton("3"));
-		botones.add(new JButton("+"));
-
-		// fila 5
-		botones.add(new JButton("0"));
-		botones.add(new JButton("."));
-		botones.add(new JButton("="));
-		botones.add(new JButton(""));
-
-		calculadora.add(botones,BorderLayout.CENTER);
-	}
-	public void interes() 
-	{
-		JPanel calculadora = new JPanel();
-		calculadora.setSize(320,420);
-		calculadora.setLocation(330,80);
-		calculadora.setBackground(new Color(230,230,230));
-		calculadora.setLayout(new BorderLayout(50,50));
-		this.add(calculadora);
-		
-		JLabel title = new JLabel("INTERES");
-		title.setFont(new Font("Arial",Font.BOLD,28));
-		title.setBackground(new Color(230,230,230));
-		calculadora.add(title,BorderLayout.NORTH);
-		
-		// panel botones
-		JPanel botones = new JPanel();
-		botones.setLayout(new GridLayout(0,2));
-		botones.setBackground(new Color(230,230,230));
-
-		// fila 1
-		botones.add(new JLabel("capital"));
-		botones.add(new JTextField());
-		botones.add(new JLabel("tiempo"));
-		botones.add(new JTextField());
-		botones.add(new JLabel("tasa interes"));
-		botones.add(new JTextField());
-		botones.add(new JButton("calcular"));
-		botones.add(new JButton("cancelar"));
-
-		calculadora.add(botones,BorderLayout.CENTER);
-		
-		JPanel inferior = new JPanel();
-		inferior.setLayout(new GridLayout(0,2));
-		inferior.setBackground(new Color(230,230,230));
-
-		// fila 1
-		inferior.add(new JLabel("Interes:"));
-		inferior.add(new JTextField());
-		inferior.add(new JLabel("Monto:"));
-		inferior.add(new JTextField());
-		
-		calculadora.add(inferior,BorderLayout.SOUTH);
-		
-	}
-	public void dibujo()
-	{
-		JPanel panel = new JPanel()
-		{
-			protected void paintComponent(java.awt.Graphics g)
-			{
-				super.paintComponent(g);
-				super.paintComponent(g);
-
-				// cielo
-				g.setColor(new Color(150,200,215));
-				g.fillRect(0,0,1000,620);
-
-				// Suelo
-				g.setColor(new Color(220,180,160));
-				g.fillRect(0,540,1000,80);
-
-
-				// Bloques flotantes
-				g.setColor(new Color(240,135,80));
-				g.fillRect(260,120,90,70);
-				g.fillRect(350,120,90,70);
-
-				g.fillRect(70,300,90,70);
-				g.fillRect(900,160,90,70);
-
-				g.setColor(Color.BLACK);
-				g.drawRect(260,120,90,70);
-				g.drawRect(350,120,90,70);
-				g.drawRect(70,300,90,70);
-				g.drawRect(900,160,90,70);
-
-
-				// Plataforma rosa
-				g.setColor(new Color(220,160,150));
-				g.fillRoundRect(220,400,230,140,25,25);
-
-				g.setColor(Color.BLACK);
-				g.drawRoundRect(220,400,230,140,25,25);
-
-				// Tornillo
-				g.setColor(Color.GRAY);
-				g.fillOval(235,415,25,25);
-				g.fillOval(405,415,25,25);
-				g.fillOval(235,495,25,25);
-				g.fillOval(405,495,25,25);
-
-
-				// Sombra rosa
-				g.setColor(Color.BLACK);
-				g.fillRect(450,420,25,120);
-
-
-				// plataforma azul
-				g.setColor(new Color(120,160,205));
-				g.fillRoundRect(480,340,200,200,25,25);
-
-				g.setColor(Color.BLACK);
-				g.drawRoundRect(480,340,200,200,25,25);
-
-				// tornillos
-				g.setColor(Color.GRAY);
-				g.fillOval(500,360,25,25);
-				g.fillOval(630,360,25,25);
-
-
-				// Sombra azul
-				g.setColor(Color.BLACK);
-				g.fillRect(680,380,35,160);
-
-
-				// tuberia verde
-
-				// Cuerpo
-				g.setColor(new Color(40,160,40));
-				g.fillRect(770,380,110,160);
-
-				// División central
-				g.setColor(new Color(25,130,25));
-				g.fillRect(820,380,4,160);
-
-				// Boca de la tubería
-				g.setColor(new Color(70,200,70));
-				g.fillRect(760,350,130,40);
-
-				// borde inferior de la boca
-				g.setColor(new Color(30,140,30));
-				g.fillRect(760,380,130,10);
-
-				// líneas decorativas
-				g.setColor(new Color(30,120,30));
-				g.drawLine(785,350,785,540);
-				g.drawLine(855,350,855,540);
-
-
-				// plataforma verde
-				g.setColor(new Color(80,190,100));
-				g.fillRoundRect(950,400,200,140,25,25);
-
-				g.setColor(Color.BLACK);
-				g.drawRoundRect(950,400,200,140,25,25);
-
-				// tornillos
-				g.setColor(Color.GRAY);
-				g.fillOval(970,420,25,25);
-				g.fillOval(970,495,25,25);
-				
-			}
-		};
-
-		panel.setBounds(0,0,1000,620);
-		panel.setOpaque(false);
-		this.add(panel);
-
-		this.repaint();
-		this.revalidate();
-	}
+	
+	
+	
 	public void router(String target) {
 	    this.getContentPane().removeAll();
+
 	    if (target.equals("login")) {
 	        this.login();
 	    } 
 	    else if (target.equals("registro")) {
 	        this.registro();
 	    }
+	    else if (target.equals("crear")) {
+	        this.pantallaCrear();
+	    }
+	    else if (target.equals("acceder")) {
+	        this.pantallaAcceder();
+	    }
+	    else if (target.equals("acerca")) {
+	        this.pantallaCrear(); // o crea otra pantalla si quieres
+	    }
+
 	    this.revalidate();
 	    this.repaint();
 	}
