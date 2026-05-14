@@ -6,17 +6,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import models.User;
+
 public class UserController {
 
-    private final String URL = "jdbc:mysql://127.0.0.1:3306/tu_basedatos";
+    private final String URL = "jdbc:mysql://127.0.0.1:3306/prueba";
     private final String USER = "root";
     private final String PASSWORD = "";
 
-    public ArrayList<Object[]> getUsers() {
+    public ArrayList<User> obtenerUsuarios() {
 
-        ArrayList<Object[]> usersList = new ArrayList<>();
+        ArrayList<User> listaUsuarios = new ArrayList<>();
 
-        String query = "SELECT id, username, password, nombre_completo FROM usuarios";
+        String query = "SELECT * FROM usuarios";
 
         try {
 
@@ -34,14 +36,14 @@ public class UserController {
 
             while(rs.next()) {
 
-                Object[] row = {
+                User usuario = new User(
                     rs.getInt("id"),
                     rs.getString("username"),
                     rs.getString("password"),
                     rs.getString("nombre_completo")
-                };
+                );
 
-                usersList.add(row);
+                listaUsuarios.add(usuario);
             }
 
             rs.close();
@@ -53,6 +55,41 @@ public class UserController {
             e.printStackTrace();
         }
 
-        return usersList;
+        return listaUsuarios;
+    }
+
+    public boolean registrarUsuario(User u) {
+
+        String query = "INSERT INTO usuarios(username,password,nombre_completo) VALUES(?,?,?)";
+
+        try {
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            Connection conn = DriverManager.getConnection(
+                URL,
+                USER,
+                PASSWORD
+            );
+
+            PreparedStatement ps = conn.prepareStatement(query);
+
+            ps.setString(1, u.getUsername());
+            ps.setString(2, u.getPassword());
+            ps.setString(3, u.getNombreCompleto());
+
+            int resultado = ps.executeUpdate();
+
+            ps.close();
+            conn.close();
+
+            return resultado > 0;
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }
