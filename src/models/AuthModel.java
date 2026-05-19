@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 
 public class AuthModel {
 
-    private final String URL = "jdbc:mysql://127.0.0.1:3306/prueba";
-    private final String USER = "root";
-    private final String PASSWORD = "";
+    private final String URL = "jdbc:mysql://sql.freedb.tech/freedb_DyEidby3";
+    private final String USER = "u_PuwJuX";
+    private final String PASSWORD = "Qievrsb1FWxR";
 
     public AuthModel() {
 
